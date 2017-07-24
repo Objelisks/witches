@@ -3,9 +3,10 @@ import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry,
   PlaneGeometry, PCFSoftShadowMap } from './lib/three/three.js';
 import { World, NaiveBroadphase, Sphere, Vec3, Body, Plane } from './lib/cannon/cannon.js';
 import { c } from './constants.js';
+import { Cloud } from './cloud.js';
 
 const scene = new Scene();
-const camera = new PerspectiveCamera(75, c.width / c.height, 0.1, 1000);
+const camera = new PerspectiveCamera(45, c.width / c.height, 0.1, 1000);
 
 const world = new World();
 world.gravity.set(0, 0, -9.82);
@@ -25,9 +26,9 @@ const cube = new Mesh(geo, mat);
 cube.castShadow = true;
 scene.add(cube);
 
-camera.position.x = 5;
-camera.position.y = 5;
-camera.position.z = 5;
+camera.position.x = 15;
+camera.position.y = 15;
+camera.position.z = 15;
 camera.lookAt(cube.position);
 
 const shape = new Sphere(0.5);
@@ -60,6 +61,10 @@ scene.add(ground);
 const groundShape = new Plane();
 const groundBody = new Body({ mass: 0, shape: groundShape });
 world.add(groundBody);
+
+const cloud = new Cloud(10, 5, 10);
+cloud.position.y = 2.5;
+scene.add(cloud);
 
 const animate = () => {
   requestAnimationFrame(animate);
