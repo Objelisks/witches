@@ -1,0 +1,86 @@
+MVP
+  kitchen
+    pot
+    sink
+    stove
+  light fire
+  pick up pot
+  fill pot with water
+  put pot on stove
+  pick up dried newt from counter
+  put dried newt in pot
+  changes color over time
+  scoop out potion
+  pour out potion
+  purple fog with sparkles fills room
+
+
+
+
+design
+27 effects
+
+Summon
+Grow
+Particles
+
+Color - multiple opts but all same effect
+Weight
+Weird
+
+Plants
+Fire
+Cloud
+
+
+
+Spells
+  bubbles particles
+  bubble surround thing
+  summon imp
+  summon demon
+  grow berry bush
+  grow fungus
+
+
+
+House Places
+  kitchen
+    stove
+    sink
+    place for pot off stove
+  garden
+    plot
+    window
+  summoning area
+    circle
+    table with chalk
+  bed
+    endtable
+    door to outside
+
+House Actions
+  move pot on heat
+  move pot off heat
+  light fire
+  draw circle
+  place held in circle
+  get resource from garden
+  open window
+  close window
+
+N ingredients
+  butterfly wing
+  dried newt
+  glowing fungus
+  purple berry
+  
+  
+
+
+ingredient tech tree
+
+
+
+control player by clicking highlighted objects
+mini inset cam of held objects (max three)

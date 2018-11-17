@@ -1,21 +1,16 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry,
   MeshStandardMaterial, Mesh, AmbientLight, DirectionalLight,
-  PlaneGeometry, PCFSoftShadowMap } from './lib/three/three.js';
-import { World, NaiveBroadphase, Sphere, Vec3, Body, Plane } from './lib/cannon/cannon.js';
+  PlaneGeometry } from './lib/three/three.module.js';
 import { c } from './constants.js';
 import { Cloud } from './cloud.js';
 
 const scene = new Scene();
 const camera = new PerspectiveCamera(45, c.width / c.height, 0.1, 1000);
 
-const world = new World();
-world.gravity.set(0, 0, -9.82);
-world.broadphase = new NaiveBroadphase();
-world.defaultContactMaterial.friction = 1.0;
-world.defaultContactMaterial.restitution = 0.001;
-
 const renderer = new WebGLRenderer();
 renderer.setSize(c.width, c.height);
+renderer.setClearColor(0x222222);
+renderer.extensions.get('EXT_frag_depth');
 document.body.appendChild(renderer.domElement);
 
 renderer.shadowMap.enabled = true;
@@ -30,11 +25,6 @@ camera.position.x = 15;
 camera.position.y = 15;
 camera.position.z = 15;
 camera.lookAt(cube.position);
-
-const shape = new Sphere(0.5);
-const body = new Body({ mass: 5, shape: shape });
-body.position.set(0, 0, 5);
-world.add(body);
 
 const ambient = new AmbientLight(0x9999cc);
 scene.add(ambient);
@@ -58,20 +48,12 @@ const ground = new Mesh(groundGeo, groundMat);
 ground.receiveShadow = true;
 scene.add(ground);
 
-const groundShape = new Plane();
-const groundBody = new Body({ mass: 0, shape: groundShape });
-world.add(groundBody);
-
 const cloud = new Cloud(10, 5, 10);
 cloud.position.y = 2.5;
 scene.add(cloud);
 
 const animate = () => {
   requestAnimationFrame(animate);
-  world.step(c.timeStep);
-  cube.position.set(body.position.x, body.position.z, body.position.y);
-  cube.quaternion.set(body.quaternion.x, body.quaternion.z,
-      body.quaternion.y, -body.quaternion.w);
   renderer.render(scene, camera);
 };
 animate();

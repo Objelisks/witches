@@ -1,6 +1,6 @@
-import { BoxGeometry, Mesh, ShaderMaterial } from './lib/three/three.js';
-import cloudFragment from './shade/cloud.frag';
-import cloudVertex from './shade/cloud.vert';
+import { BoxGeometry, Mesh, ShaderMaterial } from './lib/three/three.module.js';
+import cloudFragment from './shade/cloud.frag.js';
+import cloudVertex from './shade/cloud.vert.js';
 
 class Cloud extends Mesh {
   constructor(x, y, z) {
